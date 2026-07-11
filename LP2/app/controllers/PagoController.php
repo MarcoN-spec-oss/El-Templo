@@ -1,7 +1,5 @@
 <?php
-
 require_once "../app/models/PagoModel.php";
-
 class PagoController
 {
     private $modelo;
@@ -13,7 +11,6 @@ class PagoController
             header("Location:index.php?page=login");
             exit();
         }
-
         $this->modelo=new PagoModel();
     }
 

@@ -1,11 +1,7 @@
 <?php
-
 require_once "../app/models/SocioModel.php";
-
 class SocioController{
-
     private $modelo;
-
     public function __construct(){
 
         if(!isset($_SESSION["idUsuario"])){
@@ -47,5 +43,4 @@ class SocioController{
         $this->modelo->eliminar($_GET["id"]);
         header("Location:index.php?page=socios");
     }
-
 }
