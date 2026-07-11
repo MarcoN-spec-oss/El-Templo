@@ -103,6 +103,34 @@ Inactivo
 </div>
 
 <div class="col-md-12 mt-4">
+<hr>
+<h5><i class="bi bi-key-fill"></i> Acceso al portal del socio</h5>
+</div>
+
+<div class="col-md-6">
+
+<label>Usuario</label>
+
+<input
+class="form-control"
+name="usuario"
+value="<?= htmlspecialchars($socio["usuario"] ?? '') ?>">
+
+</div>
+
+<div class="col-md-6">
+
+<label>Nueva contraseña (opcional)</label>
+
+<input
+type="text"
+class="form-control"
+name="password"
+placeholder="Dejar en blanco para no cambiarla">
+
+</div>
+
+<div class="col-md-12 mt-4">
 
 <button class="btn btn-warning">
 

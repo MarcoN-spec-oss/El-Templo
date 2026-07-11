@@ -75,6 +75,38 @@ class="form-control">
 </div>
 
 <div class="col-md-12 mt-4">
+<hr>
+<h5><i class="bi bi-key-fill"></i> Acceso al portal del socio</h5>
+<p class="text-muted" style="font-size:.85rem;">
+Si dejas estos campos vacíos, se usará el DNI como usuario y como contraseña por defecto.
+</p>
+</div>
+
+<div class="col-md-6">
+
+<label>Usuario (opcional)</label>
+
+<input
+type="text"
+name="usuario"
+class="form-control"
+placeholder="Por defecto: el DNI">
+
+</div>
+
+<div class="col-md-6">
+
+<label>Contraseña (opcional)</label>
+
+<input
+type="text"
+name="password"
+class="form-control"
+placeholder="Por defecto: el DNI">
+
+</div>
+
+<div class="col-md-12 mt-4">
 
 <button class="btn btn-warning">
 

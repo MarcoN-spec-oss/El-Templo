@@ -54,7 +54,6 @@ Pagos
 <i class="bi bi-calendar-check-fill"></i>
 <i class="bi bi-cash-stack"></i>
 
-
 Asistencias
 </h5>
 <h1><?= $asistencias ?></h1>
@@ -64,7 +63,5 @@ Asistencias
 </div>
 </div>
 <?php
-
 include "../app/views/layout/footer.php";
-
 ?>
