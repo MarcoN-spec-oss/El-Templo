@@ -2,7 +2,7 @@
 class Database
 {
     private $host = "localhost";
-    private $dbname = "gimnasio_db";
+    private $dbname = "eltemplo";
     private $user = "root";
     private $pass = "";
     private $charset = "utf8mb4";
