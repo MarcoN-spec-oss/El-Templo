@@ -1,11 +1,8 @@
 <?php
-
 require_once __DIR__ . "/../../config/database.php";
-
 class PagoModel
 {
     private $cn;
-
     public function __construct()
     {
         $db = new Database();
@@ -30,14 +27,20 @@ class PagoModel
         return $this->cn->query("SELECT idSocio,nombres,apellidos FROM socios WHERE estado='Activo'")->fetchAll();
     }
 
+    public function listarPorSocio($idSocio)
+    {
+        $sql = "SELECT * FROM pagos WHERE idSocio=? ORDER BY fechaPago DESC";
+        $stmt = $this->cn->prepare($sql);
+        $stmt->execute([$idSocio]);
+        return $stmt->fetchAll();
+    }
+
     public function guardar($datos)
     {
         $sql="INSERT INTO pagos
         (idSocio,fechaPago,monto,metodoPago,estado)
         VALUES(?,?,?,?,?)";
-
         $stmt=$this->cn->prepare($sql);
-
         return $stmt->execute([
             $datos["idSocio"],
             $datos["fechaPago"],
@@ -66,7 +69,6 @@ class PagoModel
               WHERE idPago=?";
 
         $stmt=$this->cn->prepare($sql);
-
         return $stmt->execute([
             $datos["idSocio"],
             $datos["fechaPago"],

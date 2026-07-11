@@ -44,4 +44,13 @@ class AsistenciaModel
         $stmt = $this->cn->prepare("DELETE FROM asistencias WHERE idAsistencia=?");
         return $stmt->execute([$id]);
     }
+
+    // Asistencias de un socio en particular (para el portal del socio)
+    public function listarPorSocio($idSocio)
+    {
+        $sql = "SELECT * FROM asistencias WHERE idSocio=? ORDER BY fecha DESC, horaEntrada DESC";
+        $stmt = $this->cn->prepare($sql);
+        $stmt->execute([$idSocio]);
+        return $stmt->fetchAll();
+    }
 }

@@ -4,7 +4,6 @@ require_once __DIR__ . "/../../config/database.php";
 
 class MembresiaModel
 {
-
     private $cn;
 
     public function __construct()
@@ -31,16 +30,29 @@ class MembresiaModel
         return $this->cn->query("SELECT idSocio,nombres,apellidos FROM socios WHERE estado='Activo'")->fetchAll();
     }
 
+    public function listarPorSocio($idSocio)
+    {
+        $sql = "SELECT * FROM membresias WHERE idSocio=? ORDER BY idMembresia DESC";
+        $stmt = $this->cn->prepare($sql);
+        $stmt->execute([$idSocio]);
+        return $stmt->fetchAll();
+    }
+   
+    public function obtenerActivaPorSocio($idSocio)
+    {
+        $sql = "SELECT * FROM membresias WHERE idSocio=? ORDER BY fechaFin DESC LIMIT 1";
+        $stmt = $this->cn->prepare($sql);
+        $stmt->execute([$idSocio]);
+        return $stmt->fetch();
+    }
+
     public function guardar($datos)
     {
         $sql="INSERT INTO membresias
         (idSocio,tipo,fechaInicio,fechaFin,costo,estado)
         VALUES(?,?,?,?,?,?)";
-
         $stmt=$this->cn->prepare($sql);
-
         return $stmt->execute([
-
             $datos["idSocio"],
             $datos["tipo"],
             $datos["fechaInicio"],
@@ -50,7 +62,6 @@ class MembresiaModel
 
         ]);
     }
-
     public function obtener($id)
     {
         $stmt=$this->cn->prepare("SELECT * FROM membresias WHERE idMembresia=?");
@@ -69,9 +80,7 @@ class MembresiaModel
         costo=?,
         estado=?
         WHERE idMembresia=?";
-
         $stmt=$this->cn->prepare($sql);
-
         return $stmt->execute([
 
             $datos["idSocio"],
