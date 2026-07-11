@@ -7,7 +7,6 @@ require_once "../config/database.php";
 $pagina = $_GET["page"] ?? "login";
 
 switch ($pagina) {
-
     case "login":
         require_once "../app/controllers/LoginController.php";
         $controller = new LoginController();
@@ -119,6 +118,28 @@ switch ($pagina) {
     }
         break;
     
+    case "login-socio":
+        require_once "../app/controllers/SocioPortalController.php";
+        $controller = new SocioPortalController();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $controller->ingresar();
+        } else {
+            $controller->index();
+        }
+        break;
+
+    case "mi-cuenta":
+        require_once "../app/controllers/SocioPortalController.php";
+        $controller = new SocioPortalController();
+        $controller->dashboard();
+        break;
+
+    case "logout-socio":
+        require_once "../app/controllers/SocioPortalController.php";
+        $controller = new SocioPortalController();
+        $controller->salir();
+        break;
+
     case "logout":
         session_destroy();
         header("Location:index.php?page=login");
